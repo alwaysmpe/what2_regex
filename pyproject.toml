@@ -1,0 +1,201 @@
+[project]
+name = "what2-regex"
+version = "0.1.0"
+description = "What2 Regex"
+authors = [
+    {name = "Marc Edwards", email = "marc@mlwhat.com"}
+]
+dependencies = []
+requires-python = ">=3.13"
+readme = "README.md"
+license = {text = "MIT"}
+classifiers = [
+    "Development Status :: 3 - Alpha",
+]
+
+[project.urls]
+Homepage = "https://github.com/alwaysmpe/regex"
+Repository = "https://github.com/alwaysmpe/regex"
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "pytest>=8.3.3",
+    "pytest-order>=1.3.0",
+    "pytest-gitignore>=1.3",
+    "setuptools>=75.2.0",
+    "toml>=0.10.2",
+    "what2>=0.3.3",
+    # code analysis tools - use latest where possible, fix what breaks.
+    "basedpyright",
+    "ruff",
+    "pylama",
+    "darglint2",
+]
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[tool.pytest.ini_options]
+addopts = """\
+--doctest-modules \
+--doctest-ignore-import-errors \
+--ignore=tasks.py \
+--tb=short \
+"""
+
+[tool.pyright]
+typeCheckingMode  = "strict"
+useLibraryCodeForTypes = true
+reportMissingTypeStubs = false
+reportImplicitOverride = true
+reportPropertyTypeMismatch = true
+reportImportCycles = true
+reportUninitializedInstanceVariable = true
+reportCallInDefaultInitializer = true
+reportImplicitStringConcatenation = true
+reportUnusedCallResult = true
+reportUnnecessaryTypeIgnoreComment = true
+reportShadowedImports = true
+reportAny = true
+reportIgnoreCommentWithoutRule = true
+reportInvalidCast = true
+reportImplicitRelativeImport = true
+reportPrivateLocalImportUsage = true
+reportUnsafeMultipleInheritance = true
+reportImplicitAbstractClass = true
+reportUnannotatedClassAttribute = true
+reportUnusedParameter = true
+reportArgumentType = true
+exclude = [
+    "**/.ipynb_checkpoints/*",
+    "**/.venv/",
+    "./tasks.py",
+    "./exp.py",
+]
+ignore =  [
+    "**/.ipynb_checkpoints/*",
+    "**/.venv/",
+    "./tasks.py",
+    "./exp.py",
+]
+
+[tool.ruff]
+
+line-length = 160
+indent-width = 4
+target-version = "py312"
+exclude = [
+    "**/.ipynb_checkpoints/*",
+    "**/.venv/",
+    "tasks.py",
+    "exp.py",
+]
+
+[tool.ruff.format]
+
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+[tool.ruff.lint]
+
+preview = true
+select = [
+    "ALL",
+    # aren't selected by all due to conflicts
+    "D213",
+    "D215",
+    "D404",
+    "D405",
+    "D406",
+    "D407",
+    "D408",
+    "D408",
+    "D409",
+    "D410",
+    "D411",
+    "D417",
+]
+
+ignore = [
+    "DOC", # pydoclint doesn't support pep257
+    "FIX002", # Line contains TODO
+    "TD002", # Missing authon in TODO - it's me, hi, I'm the problem it's me.
+    "TD003", # Missing issue link after TODO
+    "D107", # Missing docstring in __init__ - use class docstring.
+    "UP044", # Use * for unpacking - false positives
+    "PYI043", # Private type alias should not be suffixed with `T` - meh
+    # "TCH001",
+    # "TCH002",
+    # "TCH003",
+    "S101", # using asserts - meh
+    "CPY001", # missing copyright notice
+    # "D105",
+    "D200", # One line docstring should be on one line - preference.
+    # "D203",
+    # "D205",
+    # "D212",
+    "E261", # At least 2 spaces before an inline comment - why?
+    # "TRY002",
+    # "TRY003",
+    # "FIX001",
+    # "FIX003",
+    # "FIX004",
+    # "RET503",
+    # "RET504",
+    "RET505", # Unnecessary else after return - sometimes its clearer.
+    # "PD901",
+    # "SIM108",
+    "PLW1641", # implement eq without hash - what if it's mutable?
+    # "PYI025", # import Set as AbstractSet - No.
+    "N818", # Exception name should be named with an Error suffix - why?
+]
+
+[tool.ruff.lint.per-file-ignores]
+
+"src/what2_regex/w2.py" = [
+    "N801" # I'm using intentionally shorthand names
+]
+
+"tests/*" = [
+    "D",
+    "ANN",
+    "PLR2004",
+    "S404",
+    "S603",
+    "T201",
+    "FBT003",
+    "S101",
+]
+
+[tool.ruff.lint.flake8-quotes]
+
+avoid-escape = false
+inline-quotes = "double"
+multiline-quotes = "double"
+
+[tool.ruff.lint.flake8-tidy-imports]
+
+ban-relative-imports = "all"
+
+[tool.ruff.lint.isort]
+
+force-sort-within-sections = true
+forced-separate = ["what2*", "tests", "pytest", "_pytest"]
+
+[tool.ruff.lint.pydocstyle]
+
+convention = "pep257"
+
+[tool.pylama]
+
+ignore = "E261,C901"
+
+skip = """\
+*.ipynb_checkpoints/*,\
+"""
+
+max_line_length = 160
+
+format = "pylint"
