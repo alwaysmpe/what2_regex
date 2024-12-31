@@ -1,6 +1,6 @@
 [project]
 name = "what2-regex"
-version = "0.1.0"
+version = "0.1.1"
 description = "What2 Regex"
 authors = [
     {name = "Marc Edwards", email = "marc@mlwhat.com"}
@@ -45,6 +45,7 @@ addopts = """\
 """
 
 [tool.pyright]
+
 typeCheckingMode  = "strict"
 useLibraryCodeForTypes = true
 reportMissingTypeStubs = false
