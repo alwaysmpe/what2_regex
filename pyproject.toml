@@ -1,6 +1,6 @@
 [project]
 name = "what2-regex"
-version = "0.1.1"
+version = "0.1.2"
 description = "What2 Regex"
 authors = [
     {name = "Marc Edwards", email = "marc@mlwhat.com"}
@@ -14,8 +14,8 @@ classifiers = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/alwaysmpe/regex"
-Repository = "https://github.com/alwaysmpe/regex"
+Homepage = "https://github.com/alwaysmpe/what2_regex"
+Repository = "https://github.com/alwaysmpe/what2_regex"
 
 [tool.pdm.dev-dependencies]
 dev = [

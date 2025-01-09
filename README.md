@@ -139,4 +139,4 @@ Swapping single characters a-q for each character class, this is:
 ab|[abc]|i*(?:d*(?:e+|fe*|h)g*|d+|ll|k(?:n*pk)*|j(?:[nqp]*?q[nqp]*j)*|[^abc])[npoq]*
 ```
 The above regex is borderline incomprehensible,
-and [why I wrote this](https://github.com/alwaysmpe/what2_grapheme/blob/e7159aa75183da38a46e560f5653ab34614e5090/src/what2_grapheme/fast_re/api.py#L356-L438).
+and [why I wrote this](https://pypi.org/project/what2-grapheme).
