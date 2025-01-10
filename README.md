@@ -136,7 +136,15 @@ op_egc_re = w2.or_seq(
 
 Swapping single characters a-q for each character class, this is:
 ```
-ab|[abc]|i*(?:d*(?:e+|fe*|h)g*|d+|ll|k(?:n*pk)*|j(?:[nqp]*?q[nqp]*j)*|[^abc])[npoq]*
+ab|[abc]|i*(?:d*(?:e+|fe*|h)g*|d+|g+|ll|k(?:n*pk)*|j(?:[np]*q[nqp]*j)+|[^abc])[npoq]*
 ```
 The above regex is borderline incomprehensible,
 and [why I wrote this](https://pypi.org/project/what2-grapheme).
+
+## To Do
+
+* Suport full regex lexicon:
+    * Add "followed by" (positive lookahead group)
+    * Add all flags
+    * ???
+* Parse a RegEx and produce comparable code
